@@ -1,6 +1,6 @@
 import fetch  from "node-fetch";
 import { ChatInputCommandInteraction, EmbedBuilder,SlashCommandStringOption } from "discord.js";
-import config from "../config.js";
+import config from "../../config.js";
 const calculateBedWarsLevel = (exp) => { let level = 100 * Math.floor(exp / 487000); exp = exp % 487000; if (exp < 500) { return level + exp / 500; } level++; if (exp < 1500) { return level + (exp - 500) / 1000; } level++; if (exp < 3500) { return level + (exp - 1500) / 2000; } level++; if (exp < 7000) { return level + (exp - 3500) / 3500; } level++; exp -= 7000; return level + exp / 5000; };
 const calculateSkywarsExactLevel = (xp) => { const xpThresholds = [0, 20, 70, 150, 250, 500, 1000, 2000, 3500, 6000, 10000, 15000]; if (xp >= xpThresholds[xpThresholds.length - 1]) { return xpThresholds.length - 1 + (xp - xpThresholds[xpThresholds.length - 1]) / 10000; } else { for (let i = 0; i < xpThresholds.length; i++) { if (xp < xpThresholds[i]) { return i - 1 + (xp - xpThresholds[i - 1]) / (xpThresholds[i] - xpThresholds[i - 1]); } } } return 0; };
 interface apiResponse  { "success": Boolean, "player": {"prefix": String, "uuid": String, "displayname": String, "rank": String, "packageRank":String, "newPackageRank": String, "monthlyPackageRank":String, "firstLogin": Number, "lastLogin": Number, "lastLogout": Number, "stats": {SkyWars: { skywars_experience:Number },Bedwars:{ Experience: Number }, Duels: { wins: Number }} } }
