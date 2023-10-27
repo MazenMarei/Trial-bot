@@ -12,6 +12,7 @@ class CustomClient extends Client {
     selectMenus: Collection<String, any> = new Collection();
     modals: Collection<String, any> = new Collection();
     contextMenus: Collection<String, any> = new Collection();
+    levelsCache: Collection<String, any> = new Collection();
     buttons: Collection<String, any> = new Collection();
     menuuser: Collection<unknown, unknown>;
 }
@@ -34,4 +35,4 @@ process.on("uncaughtException", config.debugMode ? console.error : error);
 process.on("unhandledRejection", config.debugMode ? console.error : error); 
 
 client.login(config.token);
-mongoose.connect(config.Mongoose, )
+mongoose.connect(config.Mongoose)

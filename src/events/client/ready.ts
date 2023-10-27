@@ -8,6 +8,7 @@ import { readdirSync, statSync } from "fs";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v10";
 import { convertURLs } from "../../utils/windowsUrlConvertor.js";
+import { CronJob } from 'cron';
 
 interface Command {
 	name: string;
